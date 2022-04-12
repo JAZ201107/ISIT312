@@ -25,6 +25,8 @@ public class A1_Task2 {
         job.setMapperClass(Map.class);
         job.setCombinerClass(Reduce.class);
         job.setReducerClass(Reduce.class);
+        job.setMapOutputValueClass(IntWritable.class);
+        job.setMapOutputKeyClass(Text.class);
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
         FileInputFormat.addInputPath(job, new Path(args[0]));
@@ -33,16 +35,16 @@ public class A1_Task2 {
     }
 
 
-    public static class Map extends Mapper<Object, Text, Text, IntWritable> {
+    public static class Map extends Mapper<Text, Text, Text, IntWritable> {
 
         @Override
-        public void map(Object key, Text value, Mapper.Context context) throws IOException, InterruptedException {
+        public void map(Text key, Text value, Mapper.Context context) throws IOException, InterruptedException {
             String line = value.toString();
-            String[] fields = line.split(" ");
+            String[] fields = line.split("\\s+");
             String state_name = fields[0];
             String rainfall = fields[2];
 
-            context.write(new Text(state_name), new Text(rainfall));
+            context.write(new Text(state_name), new IntWritable(Integer.parseInt(rainfall)));
         } // end map
     } // end Map
 
