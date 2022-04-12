@@ -21,7 +21,7 @@ public class A1_Task2 {
     public static void main(String[] args) throws Exception {
         Configuration conf = new Configuration();
         Job job = Job.getInstance(conf, "RanFall");
-        job.setJarByClass(MinMax.class);
+        job.setJarByClass(A1_Task2.class);
         job.setMapperClass(Map.class);
         job.setCombinerClass(Reduce.class);
         job.setReducerClass(Reduce.class);
