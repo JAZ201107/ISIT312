@@ -1,5 +1,3 @@
-package HadoopTDG.Chapter02;
-
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
@@ -25,8 +23,10 @@ public class A1_Task2 {
         job.setMapperClass(Map.class);
         job.setCombinerClass(Reduce.class);
         job.setReducerClass(Reduce.class);
+
         job.setMapOutputValueClass(IntWritable.class);
         job.setMapOutputKeyClass(Text.class);
+        
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
         FileInputFormat.addInputPath(job, new Path(args[0]));
