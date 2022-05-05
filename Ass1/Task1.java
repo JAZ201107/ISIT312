@@ -41,7 +41,6 @@ public class Task1 {
             out_fs.write(buffer,0,bytesRead);
         }
 
-//        IOUtils.copyBytes(in_fs, out_fs, 4096, true);
         // close file
         in_fs.close();
         out_fs.close();

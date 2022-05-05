@@ -28,7 +28,6 @@ public class Task2 {
         // default output key and value type for Map and Reduce
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
-        // job.setMapOutputKeyClass(Text.class);
         // Specific Map value output type
         job.setMapOutputValueClass(IntWritable.class);
 
@@ -48,14 +47,9 @@ public class Task2 {
         public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
             StringTokenizer itr = new StringTokenizer(value.toString(), ","); // separate by line
             while (itr.hasMoreTokens()) {
-//                String line = itr.nextToken(); // get line
-//                String[] words = line.split("\\s+"); // separate line by space
-//                // the line like: Queensland Gold_Coast 25
-//                state.set(words[0]); // state name -> key
-//                rainfall.set(Integer.parseInt(words[2])); // rainfall -> value
                 state.set(itr.nextToken()); // state
                 String cities = itr.nextToken();
-                rainfall.set(Integer.parseInt(itr.nextToken()));
+                rainfall.set(Integer.parseInt(itr.nextToken().trim()));
                 context.write(state, rainfall);
             } // end while
         } // end map()

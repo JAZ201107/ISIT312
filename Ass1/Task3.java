@@ -23,13 +23,11 @@ public class Task3 {
         Job job = Job.getInstance(conf, "A1_Task3");
         job.setJarByClass(Task3.class);
         job.setMapperClass(Task3_Mapper.class);
-        job.setCombinerClass(WordLengthReducer.class);
         job.setReducerClass(WordLengthReducer.class);
 
         // default output key and value type for Map and Reduce
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
-        // job.setMapOutputKeyClass(Text.class);
         // Specific Map value output type
         job.setMapOutputValueClass(IntWritable.class);
 
@@ -73,7 +71,6 @@ public class Task3 {
 
 
     public static class WordLengthReducer extends Reducer<Text, IntWritable, Text, Text> {
-        //        private Text length_type = new Text();
         private Text count = new Text(); // out put value format like: xx words
 
         @Override

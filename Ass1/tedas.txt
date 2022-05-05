@@ -1,0 +1,10 @@
+Queensland, Gold Coas, 25
+Victoria, Melbourne, 125
+Victoria,Geelong, 90
+Victoria, Wodonga, 10
+NSW, Lismore, 900
+Queensland, Brisbane, 50
+South Australia, Adelaide, 300
+Western Australia, Perth, 200
+Western Australia, Albany, 200
+Western Australia, Broome, 10
